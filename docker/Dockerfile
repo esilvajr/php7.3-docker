@@ -4,7 +4,7 @@ RUN apt-get update \
     && apt-get -y --no-install-recommends install ca-certificates vim wget gcc build-essential libxml2-dev libssl-dev libcurl4-openssl-dev pkg-config curl make libpq-dev libpspell-dev librecode-dev libcurl4-openssl-dev libxft-dev
 
 #installing php7.3 from source
-RUN wget https://downloads.php.net/~cmb/php-7.3.0alpha4.tar.gz --no-check-certificate \
+RUN wget https://downloads.php.net/~cmb/php-7.3.0alpha3.tar.gz --no-check-certificate \
 	&& tar zxvf php-7.3* && cd php-7.3.0beta3 \
 	&& ./configure --enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --prefix=/etc/php/7.3 --enable-debug --with-mysqli --with-pgsql --with-pdo-mysql --with-pdo-pgsql --with-curl --enable-mbstring --with-openssl\
 	&& make && make install \
