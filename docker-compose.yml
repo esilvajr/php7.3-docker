@@ -1,0 +1,21 @@
+version: "2"
+services:
+    webserver:
+        image: nginx:alpine
+        container_name: php73beta-nginx
+        working_dir: /application
+        volumes:
+            - .:/application
+            - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+        ports:
+            - 8080:80
+    php-fpm:
+        build: docker
+        container_name: php73beta-php-fpm
+        working_dir: /application
+        volumes:
+            - .:/application
+        # command: [ "/bin/bash", "-c", "while true; do sleep 30; done;" 
+        command: [ "/bin/bash", "-c", "/etc/php/7.3/sbin/php-fpm -F -O 2>&1" ]
+        ports:
+            - "8000:80"
